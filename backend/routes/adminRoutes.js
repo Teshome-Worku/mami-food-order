@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = require("../config/jwt");
+const JWT_SECRET = process.env.JWT_SECRET || "defaultsecret";
 const bcrypt = require('bcryptjs');
 const Admin = require('../models/Admin');
 
@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { role: "admin", email: admin.email },
       JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: process.env.JWT_EXPIRES_IN || "1d" }
     );
 
     return res.json({ token });
