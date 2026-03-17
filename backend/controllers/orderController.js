@@ -93,8 +93,13 @@ const createOrder = async (req, res) => {
 // to get all orders (admin)
 const getOrders = async (_req, res) => {
   try {
-    const orders = await Order.find().sort({ createdAt: -1 });
-    return res.status(200).json({ orders });
+    // use lean() to get plain objects and map _id to id so frontend can use `order.id`
+    const orders = await Order.find().sort({ createdAt: -1 }).lean();
+    const mapped = orders.map((o) => ({
+      ...o,
+      id: o._id,
+    }));
+    return res.status(200).json({ orders: mapped });
   } catch (error) {
     console.error('Get orders error:', error);
     return res.status(500).json({ message: 'Server error' });
@@ -164,8 +169,16 @@ const lookupOrdersByPhone = async (req, res) => {
 
 const updateOrderStatus = async (req, res) => {
   try {
-    const orderId = req.params.id;
+    // accept id from params or request body for robustness
+    const rawId = req.params.id || req.body?.id || req.body?.orderId;
+    // guard against the literal string "undefined"
+    const orderId = rawId === "undefined" ? undefined : rawId;
     const nextStatus = toText(req.body?.status).toLowerCase();
+
+    if (!orderId) {
+      console.error('Update order status error: missing order id', { params: req.params, body: req.body });
+      return res.status(400).json({ message: 'Order id is required' });
+    }
 
     if (!VALID_STATUSES.includes(nextStatus)) {
       return res.status(400).json({ message: 'Invalid status. Must be one of: pending, preparing, ready, delivered' });
@@ -178,7 +191,12 @@ const updateOrderStatus = async (req, res) => {
     order.updatedAt = new Date();
     await order.save();
 
-    return res.status(200).json({ order });
+    const out = {
+      ...order.toObject(),
+      id: order._id,
+    };
+
+    return res.status(200).json({ order: out });
   } catch (error) {
     console.error('Update order status error:', error);
     return res.status(500).json({ message: 'Server error' });
