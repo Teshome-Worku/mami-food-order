@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const Menu= require("./models/MenuItem");
+const menuItems = require("./data/menu");
 
 require("dotenv").config();
 const connectDB = require("./config/db");
@@ -27,6 +29,8 @@ app.use("/api/announcements", announcementRoutes);
 const start = async () => {
   try {
     await connectDB();
+    await Menu.deleteMany(); // Clear existing menu items
+    await Menu.insertMany(menuItems); // Seed initial menu items
     // ensure admin account exists (reads ADMIN_EMAIL / ADMIN_PASSWORD from env)
     const ensureAdmin = require("./config/adminSetup");
     await ensureAdmin();

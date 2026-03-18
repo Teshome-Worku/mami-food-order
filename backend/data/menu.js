@@ -1,7 +1,7 @@
 /** Menu items - single source of truth for food items */
 
 const menuItems = [{
-        id: 1,
+        
         name: "Classic Burger",
         description: "Juicy beef patty with fresh lettuce, tomato, onions, and our secret sauce on a toasted brioche bun.",
         price: 150,
@@ -14,7 +14,7 @@ const menuItems = [{
         ingredients: ["Beef patty", "Lettuce", "Tomato", "Onion", "Brioche bun", "Secret sauce"],
     },
     {
-        id: 2,
+        
         name: "Cheese Pizza",
         description: "Hand-tossed dough topped with rich marinara, mozzarella, parmesan, and fresh basil.",
         price: 300,
@@ -27,7 +27,7 @@ const menuItems = [{
         ingredients: ["Pizza dough", "Marinara", "Mozzarella", "Parmesan", "Fresh basil"],
     },
     {
-        id: 3,
+       
         name: "Creamy Pasta",
         description: "Al-dente penne in a velvety garlic parmesan cream sauce with herbs and a touch of black pepper.",
         price: 250,
@@ -40,7 +40,7 @@ const menuItems = [{
         ingredients: ["Penne pasta", "Garlic", "Parmesan", "Cream", "Black pepper", "Herbs"],
     },
     {
-        id: 4,
+
         name: "Grilled Chicken Wrap",
         description: "Tender grilled chicken with mixed greens, avocado, and tangy yogurt dressing in a warm tortilla.",
         price: 180,
@@ -53,7 +53,6 @@ const menuItems = [{
         ingredients: ["Grilled chicken", "Mixed greens", "Avocado", "Yogurt dressing", "Tortilla"],
     },
     {
-        id: 5,
         name: "Caesar Salad",
         description: "Crisp romaine lettuce with crunchy croutons, shaved parmesan, and classic Caesar dressing.",
         price: 120,
@@ -66,7 +65,6 @@ const menuItems = [{
         ingredients: ["Romaine lettuce", "Croutons", "Parmesan", "Caesar dressing"],
     },
     {
-        id: 6,
         name: "Spicy Wings",
         description: "Crispy chicken wings tossed in our fiery house-made hot sauce, served with ranch dip.",
         price: 200,
@@ -79,7 +77,6 @@ const menuItems = [{
         ingredients: ["Chicken wings", "Hot sauce", "Ranch dip", "Celery"],
     },
     {
-        id: 7,
         name: "Coke",
         description: "Chilled classic Coca-Cola served ice-cold.",
         price: 80,
@@ -92,7 +89,6 @@ const menuItems = [{
         ingredients: [],
     },
     {
-        id: 8,
         name: "Sprite",
         description: "Crisp and refreshing lemon-lime soda.",
         price: 80,
@@ -105,7 +101,6 @@ const menuItems = [{
         ingredients: [],
     },
     {
-        id: 9,
         name: "Fanta",
         description: "Bright and bubbly orange-flavored soda.",
         price: 80,
@@ -118,7 +113,6 @@ const menuItems = [{
         ingredients: [],
     },
     {
-        id: 10,
         name: "Fresh Juice",
         description: "Freshly squeezed seasonal fruit juice. Ask for today's flavor!",
         price: 100,
@@ -131,7 +125,6 @@ const menuItems = [{
         ingredients: ["Seasonal fruits"],
     },
     {
-        id: 11,
         name: "Chocolate Cake",
         description: "Rich, moist chocolate layer cake with silky ganache frosting.",
         price: 160,
@@ -144,7 +137,6 @@ const menuItems = [{
         ingredients: ["Chocolate", "Flour", "Eggs", "Butter", "Ganache"],
     },
     {
-        id: 12,
         name: "Ice Cream Sundae",
         description: "Vanilla and chocolate scoops with hot fudge, whipped cream, and a cherry on top.",
         price: 130,

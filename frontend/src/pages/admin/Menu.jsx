@@ -121,9 +121,9 @@ const AdminMenu = () => {
     setSaving(true);
     try {
       if (editingItem) {
-        const data = await api.updateMenuItem(editingItem.id, payload);
+        const data = await api.updateMenuItem(editingItem._id, payload);
         setItems((prev) =>
-          prev.map((i) => (i.id === editingItem.id ? data.item : i))
+          prev.map((i) => (i._id === editingItem._id ? data.item : i))
         );
         showToast("Item updated", "success");
       } else {
@@ -139,10 +139,10 @@ const AdminMenu = () => {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (_id) => {
     try {
-      await api.deleteMenuItem(id);
-      setItems((prev) => prev.filter((i) => i.id !== id));
+      await api.deleteMenuItem(_id);
+      setItems((prev) => prev.filter((i) => i._id !== _id));
       showToast("Item deleted", "info");
     } catch (err) {
       showToast(err instanceof Error ? err.message : "Delete failed", "error");
@@ -200,7 +200,7 @@ const AdminMenu = () => {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredItems.map((item) => (
             <div
-              key={item.id}
+              key={item._id}
               className="overflow-hidden rounded-2xl border border-gray-200 bg-white transition hover:shadow-sm"
             >
               <div className="relative">
@@ -264,7 +264,7 @@ const AdminMenu = () => {
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleDelete(item._id)}
                       className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition hover:bg-red-50 hover:text-red-500"
                       aria-label="Delete"
                     >

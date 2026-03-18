@@ -98,8 +98,8 @@ export const api = {
       body: JSON.stringify(updates),
     }),
 
-  deleteMenuItem: (id) =>
-    fetchWithAuth(`${API_ENDPOINTS.MENU}/${id}`, {
+  deleteMenuItem: (_id) =>
+    fetchWithAuth(`${API_ENDPOINTS.MENU}/${_id}`, {
       method: "DELETE",
     }),
 
